@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Acme Product Management</title>
+    <meta charset="utf-8" />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    
+</head>
+<body ng-app="productManagement">
+    <!--<table ng-init='products = [
+           {"productId":1,
+            "productName": "Leaf rake",
+            "productCode": "GDN-0011",
+           "releaseDate": "March 19, 2009",
+           "description": "Leaf Rake with 48-inch handle",
+           "cost": 9.00,
+           "price": 19.95,
+           "category": "garden",
+           "tags": ["leaf", "tool"],
+           "imageUrl": "https://openclipart.org/download/277118/Rake2.svg"
+           },
+           {"productId":2,
+            "productName": "Leaf rake large",
+            "productCode": "GDN-0012",
+           "releaseDate": "March 19, 2009",
+           "description": "Leaf Rake with 60-inch handle",
+           "cost": 12.00,
+           "price": 29.95,
+           "category": "garden",
+           "tags": ["leaf", "tool"],
+           "imageUrl": "https://openclipart.org/download/231019/Crossed-Rakes.svg"
+           }]'>-->
+
+    <div class="panel panel-primary">
+        <div class="panel-heading" style="font-size:large">Product List</div>
+        <div class="panel-body">
+            <table class="table" ng-controller="productListCtrl as vm">
+                <thead>
+                    <tr>
+                        <td><button class="btn btn-primary" type="button" ng-click="vm.toggleImage()">{{vm.showImage?"Hide ":"Show "}}Image</button></td>
+                        <td>Product</td>
+                        <td>Code</td>
+                        <td>Available</td>
+                        <td>Price</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="product in vm.products">
+                        <td><img ng-if="vm.showImage" ng-src="{{product.imageUrl}}" title="{{product.productName}}" style="width:50px;margin:2px" /></td>
+                        <td>{{product.productName}}</td>
+                        <td>{{product.productCode}}</td>
+                        <td>{{product.releaseDate}}</td>
+                        <td>{{product.price | currency }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <!--Library scripts-->
+    <script src="js/angular.js"></script>
+    <script src="Scripts/angular-resource.js"></script>
+    <script src="Scripts/angular-mocks.js"></script>
+
+    <!--Application Script-->
+    <script src="app/app.js"></script>
+
+    <!--Common Services-->
+    <script src="common/common.services.js"></script>
+    <script src="common/productResource.js"></script>
+    <script src="common/productResourceMock.js"></script>
+
+    <!--Controllers-->
+    <script src="app/products/productListCtrl.js"></script>
+
+</body>
+
+</html>
