@@ -122,6 +122,8 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\products\productListCtrl.js" />
+    <Content Include="app\products\productListView.html" />
+    <Content Include="app\WelcomeView.html" />
     <Content Include="common\common.services.js" />
     <Content Include="common\productResource.js" />
     <Content Include="common\productResourceMock.js" />
@@ -162,6 +164,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\angular.intellisense.js" />
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <None Include="Scripts\jquery-1.9.0.intellisense.js" />

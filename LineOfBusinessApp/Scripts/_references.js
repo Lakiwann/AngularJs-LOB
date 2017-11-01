@@ -19,5 +19,6 @@
 /// <reference path="angular-sanitize.js" />
 /// <reference path="angular-scenario.js" />
 /// <reference path="angular-touch.js" />
+/// <reference path="angular-ui-router.min.js" />
 /// <reference path="bootstrap.min.js" />
 /// <reference path="jquery-1.9.0.js" />

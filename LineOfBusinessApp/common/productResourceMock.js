@@ -29,22 +29,24 @@
                    "imageUrl": "https://openclipart.org/download/231019/Crossed-Rakes.svg"
                }];
 
+        $httpBackend.whenGET("/app/products/productListView.html").passThrough();
+
+        $httpBackend.whenGET("/app/WelcomeView.html").passThrough();
+
         var productUrl = "api/products";
 
         $httpBackend.whenGET(productUrl).respond(products);
 
         var editingRegex = new RegExp(productUrl + "/[0-9]*", '');
+
         $httpBackend.whenGET(editingRegex).respond(function (method, url, data) {
             var product = { "productId": 0 };
 
             var parameters = url.split('/');
             var id = parameters[parameters.length];
-            if(id > 0)
-            {
-                for(var i=0; i<products.length; i++)
-                {
-                    if(products[i].productId == id)
-                    {
+            if (id > 0) {
+                for (var i = 0; i < products.length; i++) {
+                    if (products[i].productId == id) {
                         product = products[i];
                         break;
                     }
@@ -53,9 +55,33 @@
             }
 
             return [200, product, {}];
-        })
+        });
 
+        $httpBackend.whenPOST(editingRegex).respond(function (method, url, data) {
+            var product = angular.fromJson(data);
+
+            if (!product.productId)
+            {
+                //new product
+                product.productId = products[products.length - 1].productId + 1;
+                products.push(product);
+            }
+            else {
+                for (var i = 0; i < products.length; i++) {
+                    if (products[i].productId == product.productId) {
+                        products[i] = product;
+                        break;
+                    };
+                };
+            }
+           
+            return [200, product, {}];
+        });
+
+        
     });
+
+    
 
     
 }());

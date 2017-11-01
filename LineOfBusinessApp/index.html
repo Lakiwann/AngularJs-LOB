@@ -8,6 +8,7 @@
     
 </head>
 <body ng-app="productManagement">
+
     <!--<table ng-init='products = [
            {"productId":1,
             "productName": "Leaf rake",
@@ -32,37 +33,41 @@
            "imageUrl": "https://openclipart.org/download/231019/Crossed-Rakes.svg"
            }]'>-->
 
-    <div class="panel panel-primary">
-        <div class="panel-heading" style="font-size:large">Product List</div>
-        <div class="panel-body">
-            <table class="table" ng-controller="productListCtrl as vm">
-                <thead>
-                    <tr>
-                        <td><button class="btn btn-primary" type="button" ng-click="vm.toggleImage()">{{vm.showImage?"Hide ":"Show "}}Image</button></td>
-                        <td>Product</td>
-                        <td>Code</td>
-                        <td>Available</td>
-                        <td>Price</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="product in vm.products">
-                        <td><img ng-if="vm.showImage" ng-src="{{product.imageUrl}}" title="{{product.productName}}" style="width:50px;margin:2px" /></td>
-                        <td>{{product.productName}}</td>
-                        <td>{{product.productCode}}</td>
-                        <td>{{product.releaseDate}}</td>
-                        <td>{{product.price | currency }}</td>
-                    </tr>
-                </tbody>
-            </table>
-
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <a class="navbar-brand" ui-sref="Home">Acme Product Management</a>
+            <div class="navbar-header">
+                <button type="button"
+                        class="navbar-toggle"
+                        data-toggle="collapse"
+                        data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a ui-sref="productList">Product List</a></li>
+                    <li><a ui-sref="productEdit({productId:0})"><i class="glyphicon glyphicon-plus"></i>Add Product</a></li>
+                </ul>
+            </div>
         </div>
+    </nav>
+    <div class="container">
+        <!-- this is a Bootstrap container-->
+        <div data-ui-view>
+        </div> <!-- ui-view is to setup the routing.  If it is not recognized use 'data-ui-view'-->
     </div>
 
     <!--Library scripts-->
+    <script src="Scripts/jquery-1.9.0.js"></script>
     <script src="js/angular.js"></script>
     <script src="Scripts/angular-resource.js"></script>
     <script src="Scripts/angular-mocks.js"></script>
+    <script src="Scripts/angular-ui-router.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
 
     <!--Application Script-->
     <script src="app/app.js"></script>
