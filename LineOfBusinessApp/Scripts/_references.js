@@ -22,3 +22,7 @@
 /// <reference path="angular-ui-router.min.js" />
 /// <reference path="bootstrap.min.js" />
 /// <reference path="jquery-1.9.0.js" />
+/// <reference path="../app/products/productdetailctrl.js" />
+/// <reference path="../app/products/producteditctrl.js" />
+/// <reference path="mask.js" />
+/// <reference path="ui-bootstrap-tpls-2.5.0.js" />

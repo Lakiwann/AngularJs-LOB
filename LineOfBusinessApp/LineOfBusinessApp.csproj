@@ -94,10 +94,21 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\products\productDetailCtrl.js" />
+    <Content Include="app\products\ProductDetailView.html" />
+    <Content Include="app\products\productEditCtrl.js" />
+    <Content Include="app\products\ProductEditInfoView.html" />
+    <Content Include="app\products\ProductEditPriceView.html" />
+    <Content Include="app\products\ProductEditTagsView.html" />
+    <Content Include="app\products\ProductEditView.html" />
     <Content Include="packages.config" />
-    <Content Include="ApplicationInsights.config">
+    <Content Include="app\ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\mask.js" />
+    <Content Include="Scripts\mask.min.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-2.5.0.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-2.5.0.min.js" />
     <Content Include="Scripts\version.json" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />

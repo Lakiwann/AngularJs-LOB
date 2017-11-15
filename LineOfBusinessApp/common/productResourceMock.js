@@ -33,6 +33,17 @@
 
         $httpBackend.whenGET("/app/WelcomeView.html").passThrough();
 
+        $httpBackend.whenGET("/app/products/productDetailView.html").passThrough();
+
+        $httpBackend.whenGET("/app/products/productEditView.html").passThrough();
+
+        $httpBackend.whenGET("/app/products/productEditInfoView.html").passThrough();
+
+        $httpBackend.whenGET("/app/products/productEditPriceView.html").passThrough();
+
+        $httpBackend.whenGET("/app/products/productEditTagsView.html").passThrough();
+        
+
         var productUrl = "api/products";
 
         $httpBackend.whenGET(productUrl).respond(products);
@@ -41,9 +52,10 @@
 
         $httpBackend.whenGET(editingRegex).respond(function (method, url, data) {
             var product = { "productId": 0 };
-
+          
             var parameters = url.split('/');
-            var id = parameters[parameters.length];
+            var id = parameters[parameters.length-1];
+            
             if (id > 0) {
                 for (var i = 0; i < products.length; i++) {
                     if (products[i].productId == id) {
