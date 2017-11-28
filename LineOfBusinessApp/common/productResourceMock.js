@@ -69,6 +69,27 @@
             return [200, product, {}];
         });
 
+        $httpBackend.whenPOST(productUrl).respond(function (method, url, data) {
+            var product = angular.fromJson(data);
+
+            if (!product.productId) {
+                //new product
+                product.productId = products[products.length - 1].productId + 1;
+                products.push(product);
+            }
+            else {
+                for (var i = 0; i < products.length; i++) {
+                    if (products[i].productId == product.productId) {
+                        products[i] = product;
+                        break;
+                    };
+                };
+            }
+
+            return [200, product, {}];
+        });
+
+
         $httpBackend.whenPOST(editingRegex).respond(function (method, url, data) {
             var product = angular.fromJson(data);
 
