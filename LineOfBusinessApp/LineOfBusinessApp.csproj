@@ -101,6 +101,7 @@
     <Content Include="app\products\ProductEditPriceView.html" />
     <Content Include="app\products\ProductEditTagsView.html" />
     <Content Include="app\products\ProductEditView.html" />
+    <Content Include="common\productService.js" />
     <Content Include="css\toastr.css" />
     <Content Include="packages.config" />
     <Content Include="app\ApplicationInsights.config">

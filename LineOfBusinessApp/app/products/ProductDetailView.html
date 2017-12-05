@@ -24,6 +24,14 @@
                    <div class="col-md-6">{{vm.product.cost|currency}}</div>
                </div>
                <div class="row">
+                   <div class="col-md-2">Price:</div>
+                   <div class="col-md-6">{{vm.product.price|currency}}</div>
+               </div>
+               <div class="row">
+                   <div class="col-md-2">Margin:</div>
+                   <div class="col-md-6"> {{vm.marginPercent|number}}%</div>
+               </div>
+               <div class="row">
                    <div class="col-md-2">Name:</div>
                    <div class="col-md-6">{{vm.product.productName}}</div>
                </div>

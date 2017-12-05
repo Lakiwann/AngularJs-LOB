@@ -4,14 +4,37 @@
 
     var app = angular.module("productManagement");
     app.controller("productEditCtrl",
-                    ["product", "$state", productEditCtrl]);
+                    ["product", "$state", "productService", productEditCtrl]);
 
-    function productEditCtrl(product, $state) {
+    function productEditCtrl(product, $state, productService) {
 
         var vm = this;
 
         vm.product = product;
 
+        vm.priceOption = "percent";
+        vm.markupPercent = productService.calculateMarginPercent(vm.product.price, vm.product.cost);
+        vm.markupAmount = productService.calculateMarginAmount(vm.product.price, vm.product.cost);
+
+        vm.marginPercent = function () {
+            return productService.calculateMarginPercent(vm.product.price, vm.product.cost);
+        }
+
+        vm.calculatePrice = function () {
+            var price = 0;
+
+            if (vm.priceOption == "percent") {
+                price = productService.calculatePriceFromMarkupPercent(vm.product.cost, vm.markupPercent);
+            }
+
+            if (vm.priceOption == "amount") {
+                price = productService.calculatePriceFromMarkupAmount(vm.product.cost, vm.markupAmount);
+            }
+
+            vm.product.price = price;
+        }
+        vm.datePickerDate = new Date(vm.product.releaseDate);
+        
         if (vm.product && vm.product.productId) {
             vm.title = "Edit:" + vm.product.productName;
         }   
@@ -28,10 +51,18 @@
         };
 
         vm.submit = function () {
+            var monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+            ];
+            vm.product.releaseDate = monthNames[vm.datePickerDate.getMonth()] + ' ' + vm.datePickerDate.getDate() + ', ' + vm.datePickerDate.getFullYear();
+           
             vm.product.$save(function (data) {
                 toastr.success("Save Successful");
              }
             );
+            
+            //vm.product.releaseDate = new Date(vm.product.releaseDate);
+            //alert(vm.product.releaseDate);
         }
         
 

@@ -27,3 +27,4 @@
 /// <reference path="mask.js" />
 /// <reference path="ui-bootstrap-tpls-2.5.0.js" />
 /// <reference path="toastr.js" />
+/// <reference path="../common/productservice.js" />
